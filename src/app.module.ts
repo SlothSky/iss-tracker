@@ -1,11 +1,9 @@
 import { Module } from '@nestjs/common';
-import { ISSWebController } from './iss-web.controller';
-import { AppService } from './app.service';
-import { IssTerminalController } from './iss-terminal/iss-terminal.controller';
+import { IssModule } from './iss/iss.module';
 
 @Module({
-  imports: [],
-  controllers: [ISSWebController, IssTerminalController],
-  providers: [AppService],
+  imports: [IssModule],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
