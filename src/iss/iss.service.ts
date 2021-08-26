@@ -1,8 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import * as fs from 'fs';
 
 @Injectable()
 export class ISSService {
-  getRedirectInfo(): string {
-    return 'As you are using a browser you got redirected to the browser version of this site!';
+  getIssMap(version: string): string {
+    const map: string = fs.readFileSync('./src/assets/map.txt', 'utf8');
+
+    return map;
   }
 }
