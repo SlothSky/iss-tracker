@@ -1,4 +1,5 @@
-import { Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
+import { AgentControlMiddleware } from 'src/middleware/agent-control.middleware';
 import { ISSController } from './iss.controller';
 import { ISSService } from './iss.service';
 
@@ -7,4 +8,8 @@ import { ISSService } from './iss.service';
   controllers: [ISSController],
   providers: [ISSService],
 })
-export class IssModule {}
+export class IssModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(AgentControlMiddleware).forRoutes('*');
+  }
+}
