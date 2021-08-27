@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { IssModule } from './iss/iss.module';
+import { SatelliteModule } from './satellite/satellite.module';
 import { CoordinatesModule } from './coordinates/coordinates.module';
 @Module({
-  imports: [IssModule, CoordinatesModule],
+  imports: [SatelliteModule, CoordinatesModule],
   controllers: [],
   providers: [],
 })

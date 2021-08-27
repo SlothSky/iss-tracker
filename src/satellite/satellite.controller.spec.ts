@@ -1,22 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ISSController } from './iss.controller';
-import { ISSService } from './iss.service';
+import { SatelliteController } from './satellite.controller';
+import { SatelliteService } from './satellite.service';
 
-describe('ISSController', () => {
-  let issController: ISSController;
+describe('SatelliteController', () => {
+  let satelliteController: SatelliteController;
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [ISSController],
-      providers: [ISSService],
+      controllers: [SatelliteController],
+      providers: [SatelliteService],
     }).compile();
 
-    issController = app.get<ISSController>(ISSController);
+    satelliteController = app.get<SatelliteController>(SatelliteController);
   });
 
   describe('root', () => {
     it('should return "As you are using a browser you got redirected to the browser version of this site!"', () => {
-      expect(issController.specificRedirect()).toBe(
+      expect(satelliteController.specificRedirect()).toBe(
         'As you are using a browser you got redirected to the browser version of this site!',
       );
     });
