@@ -69,7 +69,7 @@ export class CoordinatesService {
   mapCoordinatesToMap(latitude: number, longitude: number): Array<number> {
     // first distance from equator, then calculate from this the distance from map top
     const distanceFromEquator = latitude / this.rowsDivider;
-    const distanceFromTop = (distanceFromEquator - 26) * -1;
+    const distanceFromTop = distanceFromEquator - 26;
 
     // first calculate distance from greenwich, then from map start
     const distanceFromGreenwich = longitude / this.columnsDivider;

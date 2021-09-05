@@ -4,17 +4,20 @@ import { SatelliteService } from './satellite.service';
 
 @Controller()
 export class SatelliteController {
+  returnMap: string;
+  validator = false;
+
   constructor(
     private readonly satelliteService: SatelliteService,
     private coordinatesService: CoordinatesService,
   ) {}
 
   @Get('test')
-  specificRedirect(): string {
-    this.coordinatesService.coordinatesResolver(25544).then((data) => {
-      console.log(data);
+  async specificRedirect(): Promise<string> {
+    await this.coordinatesService.coordinatesResolver(25544).then((data) => {
+      this.returnMap = this.satelliteService.getSatelliteMap('', data);
     });
 
-    return this.satelliteService.getSatelliteMap('');
+    return this.returnMap;
   }
 }
