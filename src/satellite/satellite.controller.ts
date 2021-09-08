@@ -8,7 +8,7 @@ import {
 import { CoordinatesService } from 'src/coordinates/coordinates.service';
 import { SatelliteService } from './satellite.service';
 import { Request } from 'express';
-@Controller()
+@Controller({ host: 'iss.localhost' })
 export class SatelliteController {
   returnMap: string;
   validator = false;
@@ -18,7 +18,7 @@ export class SatelliteController {
     private coordinatesService: CoordinatesService,
   ) {}
 
-  @Get('test')
+  @Get()
   async getBrowserMap(
     @Headers('user-agent') user_agent: string,
   ): Promise<string> {
