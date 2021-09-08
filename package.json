@@ -9,8 +9,8 @@
   "author": "Jan Weiß - biancoSolutions",
   "license": "GPL v3.0",
   "files": [
-    "dist", 
-    "node_modules"
+    "dist**", 
+    "node_modules**"
   ],
   "publishConfig": {
     "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
