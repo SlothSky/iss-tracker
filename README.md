@@ -5,7 +5,7 @@
 ## ISS Tracer for Web and CURL
 - TODOs: 
   -  Fix map layout (pacific ocean missing in calculations)
-
+  -  Add satellite selector for paths 
 
 
 ___
@@ -28,7 +28,7 @@ Run `npx run typedoc` to generate the documentation. The documentation artifacts
 
 ## Running lint analysis
 
-Run `npm run lint` to execute the unit tests via [jest](https://eslint.org).
+Run `npm run lint` to execute the unit tests via [ESLint](https://eslint.org).
 
 ## Running unit tests
 
