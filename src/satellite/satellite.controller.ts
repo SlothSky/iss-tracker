@@ -23,9 +23,9 @@ export class SatelliteController {
     try {
       await this.coordinatesService.coordinatesResolver(25544).then((data) => {
         this.returnMap = this.satelliteService.getSatelliteMap(user_agent, data);
-
-        return this.returnMap;
       });
+      
+      return this.returnMap;
     } catch (error) {
       
       return error;
