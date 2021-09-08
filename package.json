@@ -11,6 +11,9 @@
   "publishConfig": {
     "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
