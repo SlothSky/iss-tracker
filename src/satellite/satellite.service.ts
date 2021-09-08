@@ -8,7 +8,7 @@ export class SatelliteService {
 
   private BROWSER_COLOR_PREFIX = '<span>';
   private BROWSER_COLOR_SUFFIX = '</span>';
-  
+
   /**
    * The _getSatelliteMap()_ is the main coordination function for getting the text version of a map.
    * This function also calls the required functions for inserting the requested sattelite's position.
