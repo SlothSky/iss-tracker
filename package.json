@@ -1,10 +1,10 @@
 {
   "name": "iss-tracker",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "iss tracker made for browser and terminal",
+  "author": "Jan Weiß - biancoSolutions",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "GPL v3.0",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
