@@ -8,6 +8,9 @@
   "description": "iss tracker made for browser and terminal",
   "author": "Jan Weiß - biancoSolutions",
   "license": "GPL v3.0",
+  "publishConfig": {
+    "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
