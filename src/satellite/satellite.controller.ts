@@ -8,7 +8,7 @@ import {
 import { CoordinatesService } from 'src/coordinates/coordinates.service';
 import { SatelliteService } from './satellite.service';
 import { Request } from 'express';
-@Controller({ host: 'iss.localhost' })
+@Controller({ host: 'iss.bianco-solutions.de' })
 export class SatelliteController {
   returnMap: string;
   validator = false;
