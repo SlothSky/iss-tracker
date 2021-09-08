@@ -1,10 +1,7 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
 import { Request, Response, NextFunction } from 'express';
 
-@Injectable()
-export class AgentControlMiddleware implements NestMiddleware {
-  use(req: Request, res: Response, next: NextFunction) {
-    //console.log(req.headers);
-    next();
-  }
+export function AgentControlMiddleware(req: Request, res: Response, next: NextFunction) {
+  // Currently not used (TODO: some authentication??)
+  next();
 }

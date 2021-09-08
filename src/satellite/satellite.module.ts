@@ -10,8 +10,4 @@ import { SatelliteService } from './satellite.service';
   controllers: [SatelliteController],
   providers: [SatelliteService],
 })
-export class SatelliteModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer.apply(AgentControlMiddleware).forRoutes('*');
-  }
-}
+export class SatelliteModule {}
