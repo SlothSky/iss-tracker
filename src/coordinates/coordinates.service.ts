@@ -8,9 +8,9 @@ export class CoordinatesService {
   lastCoordinates: Array<number>;
   overallColumns = 253;
   // magic constant for 253 characters per rows
-  rowsDivider = 1.42292;
+  columnsDivider = 1.42292;
   // magic constant for 26 rows
-  columnsDivider = 3.4615;
+  rowsDivider = 3.4615;
 
   constructor(private httpService: HttpService) {}
 
@@ -69,7 +69,7 @@ export class CoordinatesService {
   mapCoordinatesToMap(latitude: number, longitude: number): Array<number> {
     // first distance from equator, then calculate from this the distance from map top
     const distanceFromEquator = latitude / this.rowsDivider;
-    const distanceFromTop = distanceFromEquator - 26;
+    const distanceFromTop = (distanceFromEquator - 26) * -1;
 
     // first calculate distance from greenwich, then from map start
     const distanceFromGreenwich = longitude / this.columnsDivider;
