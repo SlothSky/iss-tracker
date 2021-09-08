@@ -22,8 +22,8 @@ jobs:
     
     # The permissions used for the publishing of build packages
     permissions:
-      contents:read
-      packages:write
+      contents: read
+      packages: write
       
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
