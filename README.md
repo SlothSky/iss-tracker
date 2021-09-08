@@ -5,7 +5,7 @@
 ## ISS Tracer for Web and CURL
 - TODOs: 
   -  Fix map layout (pacific ocean missing in calculations)
-
+  -  Add satellite selector for paths 
 
 
 ___
