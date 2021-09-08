@@ -1,7 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Headers, HttpCode, HttpException } from '@nestjs/common';
 import { CoordinatesService } from 'src/coordinates/coordinates.service';
 import { SatelliteService } from './satellite.service';
-
+import { Request } from 'express';
 @Controller()
 export class SatelliteController {
   returnMap: string;
@@ -13,11 +13,26 @@ export class SatelliteController {
   ) {}
 
   @Get('test')
-  async specificRedirect(): Promise<string> {
-    await this.coordinatesService.coordinatesResolver(25544).then((data) => {
-      this.returnMap = this.satelliteService.getSatelliteMap('', data);
-    });
+  async getBrowserMap(@Headers('user-agent') user_agent: string): Promise<string> {
+    if (user_agent.includes('curl')) {
+      user_agent = 'terminal'
+    }
+    else {
+      user_agent = 'browser'
+    }
+    try {
+      await this.coordinatesService.coordinatesResolver(25544).then((data) => {
+        this.returnMap = this.satelliteService.getSatelliteMap(user_agent, data);
 
-    return this.returnMap;
+        return this.returnMap;
+      });
+    } catch (error) {
+      
+      return error;
+    }
+    
+
+    
   }
+
 }

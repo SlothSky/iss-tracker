@@ -6,11 +6,11 @@ export class SatelliteService {
   /**
    * The _getSatelliteMap()_ is the main coordination function for getting the text version of a map.
    * This function also calls the required functions for inserting the requested sattelite's position.
-   * @param version Is the HTML or text version requested (browser ↔ curl)
+   * @param usedTech Is the HTML or text version requested (browser ↔ curl)
    * @param indeces The indeces for the character and their upper and lower whitespaces, which shall be replaced.
    * @returns The mapInput ASCII map with the requested sattelite dot inserted.
    */
-  getSatelliteMap(version: string, indeces: Array<number>): string {
+  getSatelliteMap(usedTech: string, indeces: Array<number>): string {
     let map: string = fs.readFileSync('./src/assets/map.txt', 'utf8');
 
     map = this.addCoordinatesToMap(map, indeces);
