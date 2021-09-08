@@ -32,31 +32,63 @@ export class SatelliteService {
    * @param index The index for the character, which shall be replaced.
    * @returns The mapInput ASCII map with the ISS dot inserted.
    */
-  addCoordinatesToMap(usedTech: string, mapInput: string, issIndeces: Array<number>) {
+  addCoordinatesToMap(
+    usedTech: string,
+    mapInput: string,
+    issIndeces: Array<number>,
+  ) {
     // depending on user agent first replace upper neighbour w/ white space, then ISS with red dot, then lower neighbour w/ white space
-    if(usedTech === 'terminal')
-    {    
+    if (usedTech === 'terminal') {
       var mapOutput =
         mapInput.substring(0, issIndeces[1] - 1) +
-        ' ' + this.TERMINAL_COLOR_PREFIX + '#' + this.TERMINAL_COLOR_SUFFIX + ' ' +
-        mapInput.substring(issIndeces[1] + 2, issIndeces[2] - 1) + 
-        ' ' + this.TERMINAL_COLOR_PREFIX + '█' + this.TERMINAL_COLOR_SUFFIX + ' ' +
+        ' ' +
+        this.TERMINAL_COLOR_PREFIX +
+        '#' +
+        this.TERMINAL_COLOR_SUFFIX +
+        ' ' +
+        mapInput.substring(issIndeces[1] + 2, issIndeces[2] - 1) +
+        ' ' +
+        this.TERMINAL_COLOR_PREFIX +
+        '█' +
+        this.TERMINAL_COLOR_SUFFIX +
+        ' ' +
         mapInput.substring(issIndeces[2] + 2, issIndeces[0] - 1) +
-        ' ' + this.TERMINAL_COLOR_PREFIX + '#' + this.TERMINAL_COLOR_SUFFIX + ' ' +
+        ' ' +
+        this.TERMINAL_COLOR_PREFIX +
+        '#' +
+        this.TERMINAL_COLOR_SUFFIX +
+        ' ' +
         mapInput.substring(issIndeces[0] + 2);
-    }
-    else if(usedTech === 'browser') {
+    } else if (usedTech === 'browser') {
+      const MAP_PREFIX: string = fs.readFileSync('./src/assets/templates/start.html', 'utf8');
+      const MAP_SUFFIX: string = fs.readFileSync('./src/assets/templates/end.html', 'utf8');
       var mapOutput =
         mapInput.substring(0, issIndeces[1] - 1) +
-        ' ' + this.BROWSER_COLOR_PREFIX + '#' + this.BROWSER_COLOR_SUFFIX + ' ' +
-        mapInput.substring(issIndeces[1] + 2, issIndeces[2] - 1) + 
-        ' ' + this.BROWSER_COLOR_PREFIX + '█' + this.BROWSER_COLOR_SUFFIX + ' ' +
+        ' ' +
+        this.BROWSER_COLOR_PREFIX +
+        '#' +
+        this.BROWSER_COLOR_SUFFIX +
+        ' ' +
+        mapInput.substring(issIndeces[1] + 2, issIndeces[2] - 1) +
+        ' ' +
+        this.BROWSER_COLOR_PREFIX +
+        '█' +
+        this.BROWSER_COLOR_SUFFIX +
+        ' ' +
         mapInput.substring(issIndeces[2] + 2, issIndeces[0] - 1) +
-        ' ' + this.BROWSER_COLOR_PREFIX + '#' + this.BROWSER_COLOR_SUFFIX + ' ' +
+        ' ' +
+        this.BROWSER_COLOR_PREFIX +
+        '#' +
+        this.BROWSER_COLOR_SUFFIX +
+        ' ' +
         mapInput.substring(issIndeces[0] + 2);
-    }
-    else {
-      throw new HttpException('This user agent is not known by the server', 500);
+
+        mapOutput = MAP_PREFIX + mapOutput + MAP_SUFFIX;
+    } else {
+      throw new HttpException(
+        'This user agent is not known by the server',
+        500,
+      );
     }
 
     return mapOutput;
