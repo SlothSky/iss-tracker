@@ -4,12 +4,13 @@
     "type": "git",
     "url": "https://github.com/SlothSky/iss-tracker"
   },
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "iss tracker made for browser and terminal",
   "author": "Jan Weiß - biancoSolutions",
   "license": "GPL v3.0",
   "files": [
-    "dist"
+    "dist", 
+    "node_modules"
   ],
   "publishConfig": {
     "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
