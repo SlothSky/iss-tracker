@@ -7,7 +7,6 @@
   "version": "1.0.0",
   "description": "iss tracker made for browser and terminal",
   "author": "Jan Weiß - biancoSolutions",
-  "private": true,
   "license": "GPL v3.0",
   "scripts": {
     "prebuild": "rimraf dist",
