@@ -31,17 +31,11 @@ export class SatelliteService {
     let mapOutput =
       mapInput.substring(0, issIndeces[1] - 1) +
       ' \u001b[31m#\u001b[0m ' +
-      mapInput.substring(issIndeces[1] + 2);
-
-    mapOutput =
-      mapOutput.substring(0, issIndeces[2] - 1) +
+      mapInput.substring(issIndeces[1] + 2, issIndeces[2] - 1) + 
       ' \u001b[31m█\u001b[0m ' +
-      mapOutput.substring(issIndeces[2] + 2);
-
-    mapOutput =
-      mapOutput.substring(0, issIndeces[0] - 1) +
+      mapInput.substring(issIndeces[2] + 2, issIndeces[0] - 1) +
       ' \u001b[31m#\u001b[0m ' +
-      mapOutput.substring(issIndeces[0] + 2);
+      mapInput.substring(issIndeces[0] + 2);
 
     return mapOutput;
   }
