@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AgentControlMiddleware } from 'src/middleware/agent-control.middleware';
 
-import { CoordinatesModule } from 'src/coordinates/coordinates.module';
+import { CoordinatesModule } from '../coordinates/coordinates.module';
 import { SatelliteController } from './satellite.controller';
 import { SatelliteService } from './satellite.service';
 
