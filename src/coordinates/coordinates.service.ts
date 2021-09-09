@@ -94,11 +94,12 @@ export class CoordinatesService {
     const tempRow = mapLatitude * this.overallColumns;
     // first part (before addition) is required for getting the start point of the latitudes row
     const rowWithColumns = tempRow  + mapLongitude;
-
+    console.log('LONGITUDE :   ' + mapLongitude)
+    console.log('LATITUDE :   ' + mapLatitude)
     const indexForRender = [
-      rowWithColumns + 272 + (mapLatitude + 1),
-      rowWithColumns - 272 + (mapLatitude - 1),
-      rowWithColumns + (mapLatitude)
+      rowWithColumns + 272,
+      rowWithColumns - 272,
+      rowWithColumns
     ];
 
     return indexForRender;

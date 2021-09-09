@@ -4,19 +4,21 @@
     "type": "git",
     "url": "https://github.com/SlothSky/iss-tracker"
   },
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "iss tracker made for browser and terminal",
   "author": "Jan Weiß - biancoSolutions",
   "license": "GPL v3.0",
   "files": [
-    "dist"
+    "dist", 
+    "src/assets"
   ],
   "publishConfig": {
     "@YOUR-USERNAME:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build && npm run copy-assets",
+    "copy-assets": "mkdir -p dist/src/assets/ && cp -r src/assets/ dist/src/",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

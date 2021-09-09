@@ -1,4 +1,4 @@
-import { CoordinatesService } from 'src/coordinates/coordinates.service';
+import { CoordinatesService } from '../coordinates/coordinates.service';
 import { SatelliteService } from './satellite.service';
 export declare class SatelliteController {
     private readonly satelliteService;
