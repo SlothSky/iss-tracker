@@ -43,6 +43,7 @@ let CoordinatesService = class CoordinatesService {
         return test;
     }
     getCurrentCoordinates(satelliteID) {
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
         return this.httpService.get('https://api.wheretheiss.at/v1/satellites/' + satelliteID.toString());
     }
     mapCoordinatesToMap(latitude, longitude) {

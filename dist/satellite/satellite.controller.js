@@ -48,7 +48,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], SatelliteController.prototype, "getBrowserMap", null);
 SatelliteController = __decorate([
-    common_1.Controller({ host: 'iss.localhost' }),
+    common_1.Controller({ host: 'iss.bianco-solutions.de' }),
     __metadata("design:paramtypes", [satellite_service_1.SatelliteService,
         coordinates_service_1.CoordinatesService])
 ], SatelliteController);
