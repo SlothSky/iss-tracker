@@ -57,10 +57,12 @@ let CoordinatesService = class CoordinatesService {
     mapMapToIndeces(mapLatitude, mapLongitude) {
         const tempRow = mapLatitude * this.overallColumns;
         const rowWithColumns = tempRow + mapLongitude;
+        console.log('LONGITUDE :   ' + mapLongitude);
+        console.log('LATITUDE :   ' + mapLatitude);
         const indexForRender = [
-            rowWithColumns + 272 + (mapLatitude + 1),
-            rowWithColumns - 272 + (mapLatitude - 1),
-            rowWithColumns + (mapLatitude)
+            rowWithColumns + 272,
+            rowWithColumns - 272,
+            rowWithColumns
         ];
         return indexForRender;
     }
