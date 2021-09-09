@@ -41,14 +41,14 @@ let SatelliteController = class SatelliteController {
     }
 };
 __decorate([
-    common_1.Get(),
+    common_1.Get('test'),
     __param(0, common_1.Headers('user-agent')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], SatelliteController.prototype, "getBrowserMap", null);
 SatelliteController = __decorate([
-    common_1.Controller({ host: 'iss.bianco-solutions.de' }),
+    common_1.Controller(),
     __metadata("design:paramtypes", [satellite_service_1.SatelliteService,
         coordinates_service_1.CoordinatesService])
 ], SatelliteController);
