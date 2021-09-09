@@ -6,11 +6,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class CoordinatesService {
   lastCoordinates: Array<number>;
-  overallColumns = 253;
-  // magic constant for 253 characters per rows
-  columnsDivider = 1.42292;
-  // magic constant for 26 rows
-  rowsDivider = 3.4615;
+  overallColumns = 272;
+  // magic constant for 272 characters per rows
+  columnsDivider = 1.322;
+  // magic constant for 31 rows
+  rowsDivider = 2.903;
 
   constructor(private httpService: HttpService) {}
 
@@ -39,7 +39,7 @@ export class CoordinatesService {
             this.lastCoordinates[0],
             this.lastCoordinates[1],
           );
-          resultedIndeces = this.mapMapToIndeces(mapCoords[0], mapCoords[1]);
+          resultedIndeces = this.mapMapToIndeces(Math.round(mapCoords[0]), Math.round(mapCoords[1]));
           resolve(resultedIndeces);
         },
       });
@@ -69,11 +69,11 @@ export class CoordinatesService {
   mapCoordinatesToMap(latitude: number, longitude: number): Array<number> {
     // first distance from equator, then calculate from this the distance from map top
     const distanceFromEquator = latitude / this.rowsDivider;
-    const distanceFromTop = (distanceFromEquator - 26) * -1;
+    const distanceFromTop = (distanceFromEquator - 31) * -1;
 
     // first calculate distance from greenwich, then from map start
     const distanceFromGreenwich = longitude / this.columnsDivider;
-    const colFromZero = 126 + distanceFromGreenwich;
+    const colFromZero = 123 + distanceFromGreenwich;
 
     // distanceFromTop maps to latitude and colFromZero maps to longitude
     const calculatedIndeces = [distanceFromTop, colFromZero];
@@ -92,13 +92,13 @@ export class CoordinatesService {
    */
   mapMapToIndeces(mapLatitude: number, mapLongitude: number): Array<number> {
     const tempRow = mapLatitude * this.overallColumns;
-
     // first part (before addition) is required for getting the start point of the latitudes row
-    const rowWithColumns = tempRow - (tempRow % 253) + mapLongitude;
+    const rowWithColumns = tempRow  + mapLongitude;
+
     const indexForRender = [
-      rowWithColumns + 253,
-      rowWithColumns - 253,
-      rowWithColumns,
+      rowWithColumns + 272 + (mapLatitude + 1),
+      rowWithColumns - 272 + (mapLatitude - 1),
+      rowWithColumns + (mapLatitude)
     ];
 
     return indexForRender;

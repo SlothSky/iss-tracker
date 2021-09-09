@@ -15,9 +15,9 @@ const common_1 = require("@nestjs/common");
 let CoordinatesService = class CoordinatesService {
     constructor(httpService) {
         this.httpService = httpService;
-        this.overallColumns = 253;
-        this.columnsDivider = 1.42292;
-        this.rowsDivider = 3.4615;
+        this.overallColumns = 272;
+        this.columnsDivider = 1.322;
+        this.rowsDivider = 2.903;
     }
     async coordinatesResolver(satelliteID) {
         let resultedIndeces = [];
@@ -35,7 +35,7 @@ let CoordinatesService = class CoordinatesService {
                 },
                 complete: () => {
                     const mapCoords = this.mapCoordinatesToMap(this.lastCoordinates[0], this.lastCoordinates[1]);
-                    resultedIndeces = this.mapMapToIndeces(mapCoords[0], mapCoords[1]);
+                    resultedIndeces = this.mapMapToIndeces(Math.round(mapCoords[0]), Math.round(mapCoords[1]));
                     resolve(resultedIndeces);
                 },
             });
@@ -48,19 +48,19 @@ let CoordinatesService = class CoordinatesService {
     }
     mapCoordinatesToMap(latitude, longitude) {
         const distanceFromEquator = latitude / this.rowsDivider;
-        const distanceFromTop = (distanceFromEquator - 26) * -1;
+        const distanceFromTop = (distanceFromEquator - 31) * -1;
         const distanceFromGreenwich = longitude / this.columnsDivider;
-        const colFromZero = 126 + distanceFromGreenwich;
+        const colFromZero = 123 + distanceFromGreenwich;
         const calculatedIndeces = [distanceFromTop, colFromZero];
         return calculatedIndeces;
     }
     mapMapToIndeces(mapLatitude, mapLongitude) {
         const tempRow = mapLatitude * this.overallColumns;
-        const rowWithColumns = tempRow - (tempRow % 253) + mapLongitude;
+        const rowWithColumns = tempRow + mapLongitude;
         const indexForRender = [
-            rowWithColumns + 253,
-            rowWithColumns - 253,
-            rowWithColumns,
+            rowWithColumns + 272 + (mapLatitude + 1),
+            rowWithColumns - 272 + (mapLatitude - 1),
+            rowWithColumns + (mapLatitude)
         ];
         return indexForRender;
     }
