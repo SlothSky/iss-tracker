@@ -1,13 +1,10 @@
 import {
   Controller,
   Get,
-  Headers,
-  HttpCode,
-  HttpException,
+  Headers
 } from '@nestjs/common';
-import { CoordinatesService } from 'src/coordinates/coordinates.service';
+import { CoordinatesService } from '../coordinates/coordinates.service';
 import { SatelliteService } from './satellite.service';
-import { Request } from 'express';
 @Controller({ host: 'iss.localhost' })
 export class SatelliteController {
   returnMap: string;

@@ -1,5 +1,7 @@
 # IssTracer
 
+![main](https://github.com/SlothSky/iss-tracker/actions/workflows/main.yml/badge.svg)
+
 ![Screenshot](https://user-images.githubusercontent.com/87802083/128603250-840f3427-61cb-498c-995d-ea9ce16684a4.png)
 
 ## ISS Tracer for Web and CURL
