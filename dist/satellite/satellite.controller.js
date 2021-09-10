@@ -16,6 +16,7 @@ exports.SatelliteController = void 0;
 const common_1 = require("@nestjs/common");
 const coordinates_service_1 = require("../coordinates/coordinates.service");
 const satellite_service_1 = require("./satellite.service");
+const fs = require("fs");
 let SatelliteController = class SatelliteController {
     constructor(satelliteService, coordinatesService) {
         this.satelliteService = satelliteService;
@@ -39,16 +40,27 @@ let SatelliteController = class SatelliteController {
             return error;
         }
     }
+    getHelp() {
+        let satellite_list = JSON.parse(fs.readFileSync('./src/assets/satellite-list.json', 'utf8'));
+        console.log(satellite_list['satellites'][0]['name'] + ' -> ' + satellite_list['satellites'][0]['id']);
+        return JSON.stringify(satellite_list);
+    }
 };
 __decorate([
-    common_1.Get(),
+    common_1.Get('test'),
     __param(0, common_1.Headers('user-agent')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], SatelliteController.prototype, "getBrowserMap", null);
+__decorate([
+    common_1.Get('help'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], SatelliteController.prototype, "getHelp", null);
 SatelliteController = __decorate([
-    common_1.Controller({ host: 'iss.localhost' }),
+    common_1.Controller(),
     __metadata("design:paramtypes", [satellite_service_1.SatelliteService,
         coordinates_service_1.CoordinatesService])
 ], SatelliteController);

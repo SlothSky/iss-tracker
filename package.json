@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/SlothSky/iss-tracker"
   },
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "iss tracker made for browser and terminal",
   "author": "Jan Weiß - biancoSolutions",
   "license": "GPL v3.0",

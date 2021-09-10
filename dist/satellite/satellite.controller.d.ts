@@ -7,4 +7,5 @@ export declare class SatelliteController {
     validator: boolean;
     constructor(satelliteService: SatelliteService, coordinatesService: CoordinatesService);
     getBrowserMap(user_agent: string): Promise<string>;
+    getHelp(): string;
 }

@@ -1,11 +1,8 @@
-import {
-  Controller,
-  Get,
-  Headers
-} from '@nestjs/common';
+import { Controller, Get, Headers } from '@nestjs/common';
 import { CoordinatesService } from '../coordinates/coordinates.service';
 import { SatelliteService } from './satellite.service';
-@Controller({ host: 'iss.bianco-solutions.de' })
+import * as fs from 'fs';
+@Controller()//{ host: 'iss.localhost' }
 export class SatelliteController {
   returnMap: string;
   validator = false;
@@ -15,7 +12,7 @@ export class SatelliteController {
     private coordinatesService: CoordinatesService,
   ) {}
 
-  @Get()
+  @Get('test')
   async getBrowserMap(
     @Headers('user-agent') user_agent: string,
   ): Promise<string> {
@@ -36,5 +33,14 @@ export class SatelliteController {
     } catch (error) {
       return error;
     }
+  }
+
+  @Get('help')
+  getHelp(): string {
+    let satellite_list : JSON = JSON.parse(fs.readFileSync('./src/assets/satellite-list.json', 'utf8'));
+    console.log(satellite_list['satellites'][0]['name'] + ' -> ' + satellite_list['satellites'][0]['id'])
+    
+
+    return JSON.stringify(satellite_list);
   }
 }
